@@ -1,0 +1,431 @@
+\documentclass[10pt]{article}
+
+\usepackage[toc]{multitoc}
+\renewcommand*{\multicolumntoc}{2}
+%\setlength{\columnseprule}{0.5pt}
+
+
+\title{Qualification of R Linear Regression}
+\author{Nick Lauerman}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\maketitle
+
+\begin{abstract}
+Evaulation of various NIST data sets for linear regression to see how to model
+them in R and to use them for the perpose of qualifing R for general statistical
+use.
+\end{abstract}
+
+\tableofcontents
+
+\section{Setup}
+\subsection{R}
+This seriess of tests is being run on R with only the ``base'' packages or libraries
+installed. The following commands are issued prior to runing hte tests for the 
+reason stated
+
+\begin{description}
+   \item[options(digits = 15)] This is used to specify that 15 digits are to be displayed
+   on numbers.
+   \item[path] Sets the path to the directory were the data sets are stored.
+\end{description}
+<<setup>>=
+options(digits = 15)
+path="~/R/workspace/qual/raw data/Linear Regression/"
+@
+\subsection{Computer Information}
+The degree of accuracy  that can be expected from a computer if a function of several
+factors including the processor used. R provides a method to determine numeric tolerance based on 
+David Goldberg (1991), ``What Every Computer Scientist Should Know About Floating-Point Arithmetic''
+, ACM Computing Surveys, 23/1, 5 \- 48, also available via http://www.validlab.com/goldberg/paper.pdf.
+
+This value can be treated as the error value for the computer and for accuracy beyond requires careful
+consideration.
+
+<<>>=
+.Machine$double.eps ^ 0.5
+@
+\subsection{R Information}
+<<>>=
+version
+@
+\subsection{Data Cleaning}
+all data sets downloaded from NIST as a DAT (ASCII Format) file were cleaned up 
+to remove header information that was imbeded in the file. The file was than saved
+as a TXT file without any additional changes. This clean up was done to simplify 
+the loading of the data into R.
+
+\section{Background Information}
+
+\begin{quote}
+Even with the availability of reliable code for linear least squares fitting, problems persist. Failure to use the best algorithms and to implement them most effectively is often the cause. Therefore, we provide datasets with certified values for key statistics for testing linear least squares code. 
+Both generated and "real-world" data are included. Generated datasets challenge specific computations and include the Wampler data developed at NIST (formerly NBS) in the early 1970's. Real-world data include the challenging Longley data, as well as more benign datasets from our statistical consulting work at NIST. 
+
+Datasets are ordered by level of difficulty (lower, average, and higher). Strictly speaking the level of difficulty of a dataset depends on the algorithm used. These levels are intended to provide rough guidance for the user. Datasets of lower level of difficulty should pose few problems for most code. Discrepancies here may indicate a failure to use correct options for the code. Two datasets are included for fitting a line through the origin. We have encountered codes that produce negative R-squared and incorrect F-statistics for these datasets. Therefore, we assign them an "average" level of difficulty. Finally, several datasets of higher level of difficulty are provided. These datasets are multicollinear. They include the Longley data and several NIST datasets developed by Wampler. 
+
+Producing correct results on all datasets of higher difficulty does not imply that your software will pass all datasets of average or even lower difficulty. Similarly, producing correct results for all datasets in this collection does not imply that your software will do the same for your particular dataset. It will, however, provide some degree of assurance, in the sense that your package provides correct results for datasets known to yield incorrect results for some software. 
+
+Certified values are provided for the parameter estimates, their standard deviations, the residual standard deviation, R-squared, and the standard ANOVA table for linear regression. Certified values are quoted to 16 significant digits and are accurate up to the last digit, due to possible truncation errors. For more information on certification methodology, see the description provided for each dataset. 
+
+If your code fails to produce correct results for a dataset of higher level of difficulty, one possible remedy is to center the data and rerun the code. Centering the data, i.e., subtracting the mean for each predictor variable, reduces the degree of multicollinearity. The code may produce correct results for the centered data. You can judge this by comparing predicted values from the fit of centered data with those from the certified fit. 
+
+We plan to update this collection of datasets, and welcome your feedback on specific datasets to include, and on other ways to improve this web service.
+\end{quote}
+
+\section{Norris Data Set}
+Using the Norris data set (http://www.itl.nist.gov/div898/strd/lls/data/Norris.shtml)
+\subsection*{Data Set Description}
+
+These data are from a NIST study involving calibration of ozone monitors. The 
+response variable (y) is the customer's measurement of ozone concentration and 
+the predictor variable (x) is NIST's measurement of ozone concentration.  
+
+\subsection*{About the data set}
+
+\begin{description}
+   \item[]Data Set Properties
+   \item[Level of Difficulty] Lower
+   \item[Model Class] Linear
+   \item[Number of Parameters] 2   
+   \item[Number of observations] 36
+   \item[Predictor variable(s)] 1
+   \item[Response variable] 1
+\end{description}
+
+Certifed Regression Statistics
+
+\begin{tabular}{lll}
+   \textbf{Parameter} & \textbf{Estimate} & \textbf{Standard Deviation of Estimate}  \\ 
+	\textbf{Intercept} & -0.262323073774029 &  0.232818234301152\\ 
+	\textbf{X} & 1.00211681802045  &  0.429796848199937E-03 \\ 
+	\ 
+\end{tabular} 
+
+\begin{tabular}{ll}
+    \textbf{Residual Standard Deviation} &  0.884796396144373  \\ 
+	 \textbf{R-Squared} & 0.999993745883712    \\  
+\end{tabular}
+
+Certified Analysis of Variance Table
+
+\begin{tabular}{lllll}
+   \textbf{Source of Variation} & \textbf{Degrees of Freedom} & \textbf{Sums of Squares} & \textbf{Mean Squares} & \textbf{F Statistic} \\ 
+   \textbf{Regression} & 1 & 4255954.13232369 & 4255954.13232369 & 5436385.54079785  \\ 
+	\textbf{Residual} & 34 & 26.6173985294224 & 0.782864662630069 &  \\ 
+\end{tabular}
+
+<<Norris>>=
+Norris <- read.table(file=paste0(path,"Norris.txt"), header=TRUE)
+Norris.lm <- lm(y~x, data=Norris)
+summary(Norris.lm)
+anova(Norris.lm)
+@
+
+
+\section{Pontius}
+Using the Pontius data set (http://www.itl.nist.gov/div898/strd/lls/data/Pontius.shtml)
+
+\subsection*{Data Set Description}
+These data are from a NIST study involving calibration of load cells. The response variable (y) is the deflection and the predictor variable (x) is load.
+
+
+\subsection*{About the data set}
+
+\begin{description}
+   \item[]Data Set Properties
+   \item[Level of Difficulty] Lower
+   \item[Model Class] Quadratic
+   \item[Number of Parameters] 3
+   \item[Number of observations] 40
+   \item[Predictor variable(s)] 1
+   \item[Response variable] 1
+\end{description}
+
+\begin{tabular}{lll}
+   \textbf{Parameter} & \textbf{Estimate} & \textbf{Standard Deviation of Estimate}  \\ 
+   \textbf{Intercept} & 0.673565789473684E-03 &  0.107938612033077E-03\\ 
+	\textbf{X} & 0.732059160401003E-06  &   0.157817399981659E-09 \\ 
+   \textbf{X 2} & -0.316081871345029E-14  &  0.486652849992036E-16 \\ 
+\end{tabular} 
+
+\begin{tabular}{ll}
+    \textbf{Residual Standard Deviation} &  0.205177424076185E-03  \\ 
+    \textbf{R-Squared} & 0.99999990017853   \\  
+\end{tabular}
+
+
+\begin{tabular}{lllll}
+   \textbf{Source of Variation} & \textbf{Degrees of Freedom} & \textbf{Sums of Squares} & \textbf{Mean Squares}  & \textbf{F Statistic} \\ 
+   \textbf{Regression} & 2 & 15.6040343244198 & 7.80201716220991 & 185330865.995752 \\ 
+	\textbf{Residual} & 37 & 0.155761768796992E-05 & 0.420977753505385E-07 &  \\ 
+\end{tabular} 
+
+<<Pontius>>=
+Pontius <- read.table(file=paste0(path,"Pontius.txt"), header=TRUE)
+Pontius.lm <- lm(y~x + I(x^2), data=Pontius)
+summary(Pontius.lm)
+anova(Pontius.lm)
+@
+
+\section{NoInt1}
+Using the NoInt1 data set (http://www.itl.nist.gov/div898/strd/lls/data/NoInt1.shtml)
+
+\subsection*{Data Set Description}
+This dataset is constructed to test the ability of the software to recognize a 
+statistically significant slope for a line fit through the origin (large positive 
+value of the F statistic)
+
+\subsection*{About the data set}
+
+\begin{description}
+   \item[]Data Set Properties
+   \item[Level of Difficulty] Average
+   \item[Model Class] linear
+   \item[Number of Parameters] 1
+   \item[Number of observations] 11
+   \item[Predictor variable(s)] 1
+   \item[Response variable] 1
+\end{description}
+
+\begin{tabular}{lll}
+   \textbf{Parameter} & \textbf{Estimate} & \textbf{Standard Deviation of Estimate}  \\ 
+	 \textbf{X} &  2.07438016528926 &  0.165289256198347E-01  \\ 
+\end{tabular} 
+
+\begin{tabular}{ll}
+    \textbf{Residual Standard Deviation} &  3.56753034006338  \\ 
+    \textbf{R-Squared} & 0.999365492298663   \\  
+\end{tabular}
+
+
+\begin{tabular}{lllll}
+   \textbf{Source of Variation} & \textbf{Degrees of Freedom} & \textbf{Sums of Squares} & \textbf{Mean Squares}  & \textbf{F Statistic} \\ 
+   \textbf{Regression} & 1 & 200457.727272727 & 200457.727272727 & 15750.2500000000 \\ 
+	\textbf{Residual} & 10 & 127.272727272727 & 12.7272727272727 &  \\ 
+\end{tabular} 
+
+<<NoInt1>>=
+NoInt1 <- read.table(file=paste0(path,"NoInt1.txt"), header=TRUE)
+NoInt1.lm <- lm(y~x + 0, data=NoInt1)
+summary(NoInt1.lm)
+anova(NoInt1.lm)
+@
+
+\section{NoInt2}
+Using the NoInt2 data set (http://www.itl.nist.gov/div898/strd/lls/data/NoInt2.shtml)
+
+\subsection*{Data Set Description}
+
+
+
+\subsection*{About the data set}
+
+\begin{description}
+   \item[]Data Set Properties
+   \item[Level of Difficulty]Average
+   \item[Model Class]Linear
+   \item[Number of Parameters]1
+   \item[Number of observations]3
+   \item[Predictor variable(s)]1
+   \item[Response variable]1
+\end{description}
+
+\begin{tabular}{lll}
+   \textbf{Parameter} & \textbf{Estimate} & \textbf{Standard Deviation of Estimate}  \\ 
+	\textbf{X} &   0.727272727272727 &   \\ 
+	  &   &  \\ 
+\end{tabular} 
+
+\begin{tabular}{ll}
+    \textbf{Residual Standard Deviation} & 0.369274472937998    \\ 
+    \textbf{R-Squared} & 0.993348115299335   \\  
+\end{tabular}
+
+
+\begin{tabular}{lllll}
+   \textbf{Source of Variation} & \textbf{Degrees of Freedom} & \textbf{Sums of Squares} & \textbf{Mean Squares}  & \textbf{F Statistic} \\ 
+   \textbf{Regression} & 1 & 40.7272727272727 & 0.7272727272727 & 298.66666666666 \\ 
+	\textbf{Residual} & 2 & 0.272727272727273 & 0.136363636363636  \\ 
+\end{tabular} 
+
+<<NoInt2>>=
+NoInt2 <- read.table(file=paste0(path,"NoInt2.txt"), header=TRUE)
+NoInt2.lm <- lm(y~x + 0, data=NoInt2)
+summary(NoInt2.lm)
+anova(NoInt2.lm)
+@
+
+
+\section{Filip}
+Using the Filip data set (http://www.itl.nist.gov/div898/strd/lls/data/Filip.shtml)
+
+\subsection*{Data Set Description}
+None supplied
+
+
+\subsection*{About the data set}
+
+\begin{description}
+   \item[]Data Set Properties
+   \item[Level of Difficulty] Higher
+   \item[Model Class] Polynomial
+   \item[Number of Parameters] 11
+   \item[Number of observations]82
+   \item[Predictor variable(s)]1
+   \item[Response variable]1
+\end{description}
+
+\begin{tabular}{lll}
+   \textbf{Parameter} & \textbf{Estimate} & \textbf{Standard Deviation of Estimate}  \\ 
+   \textbf{Intercept} &-1467.48961422980    &    298.084530995537 \\ 
+	\textbf{X} &  -2772.17959193342     &   559.779865474950  \\ 
+   \textbf{X 2} &   -2316.37108160893   &     466.477572127796  \\ 
+   \textbf{X 3} &   -1127.97394098372   &     227.204274477751  \\ 
+   \textbf{X 4} &   -354.478233703349    &    71.6478660875927  \\ 
+   \textbf{X 5} &   -75.1242017393757    &    15.2897178747400  \\ 
+   \textbf{X 6} &  -10.8753180355343    &    2.23691159816033 \\ 
+   \textbf{X 7} &    -1.06221498588947   &     0.221624321934227   \\ 
+   \textbf{X 8} &   -0.670191154593408E-01  &      0.142363763154724E-01   \\ 
+   \textbf{X 9} &   -0.246781078275479E-02   &     0.535617408889821E-03   \\ 
+   \textbf{X 10} &   -0.402962525080404E-04    &    0.896632837373868E-05  \\ 
+\end{tabular} 
+
+\begin{tabular}{ll}
+    \textbf{Residual Standard Deviation} &  0.334801051324544E-02  \\ 
+    \textbf{R-Squared} &  0.996727416185620   \\  
+\end{tabular}
+
+
+\begin{tabular}{lllll}
+   \textbf{Source of Variation} & \textbf{Degrees of Freedom} & \textbf{Sums of Squares} & \textbf{Mean Squares}  & \textbf{F Statistic} \\ 
+   \textbf{Regression} & 10 & 0.242391619837339 &  0.242391619837339E-01	& 2162.43954511489   \\ 
+	\textbf{Residual} &  71  & 0.795851382172941E-03 &	0.112091743968020E-04  \\ 
+\end{tabular} 
+
+<<Filip>>=
+Filip <- read.table(file=paste0(path,"Filip.txt"), header=TRUE)
+Filip.lm <- lm(y ~ poly(x,10,raw = TRUE), data=Filip)
+summary(Filip.lm)
+anova(Filip.lm)
+@
+
+<<Filip2>>=
+Filip2.lm <- lm(y~x + 
+                   I(x^2) +
+                   I(x^3) +
+                   I(x^4) +
+                   I(x^5) +
+                   I(x^6) +
+                   I(x^7) +
+                   I(x^8) +
+                   I(x^9) +
+                   I(x^10) 
+                , data=Filip)
+summary(Filip2.lm)
+anova(Filip2.lm)
+@
+
+
+
+\section{Longley}
+Using the Longley data set (http://www.itl.nist.gov/div898/strd/lls/data/Longley.shtml)
+
+\subsection*{Data Set Description}
+This classic dataset of labor statistics was one of the first used to test the 
+accuracy of least squares computations. The response variable (y) is the 
+Total Derived Employment and the predictor variables are GNP Implicit Price Deflator 
+with Year 1954 = 100 (x1), Gross National Product (x2), Unemployment (x3), 
+Size of Armed Forces (x4), Non-Institutional Population Age 14 \& Over (x5), 
+and Year (x6).
+
+
+\subsection*{About the data set}
+
+\begin{description}
+   \item[]Data Set Properties
+   \item[Level of Difficulty] Higher
+   \item[Model Class] Multilinear
+   \item[Number of Parameters] 7
+   \item[Number of observations] 16
+   \item[Predictor variable(s)] 6
+   \item[Response variable] 1
+\end{description}
+
+\begin{tabular}{lll}
+   \textbf{Parameter} & \textbf{Estimate} & \textbf{Standard Deviation of Estimate}  \\ 
+   \textbf{Intercept} &  -3482258.63459582    &    890420.383607373 \\ 
+	\textbf{X1} &   15.0618722713733    &    84.9149257747669   \\
+   \textbf{X2} &   -0.358191792925910E-01  &      0.334910077722432E-01   \\
+   \textbf{X3} &   -2.02022980381683     &   0.488399681651699  \\
+   \textbf{X4} &   -1.03322686717359    &    0.214274163161675   \\
+   \textbf{X5} &   -0.511041056535807E-01   &     0.226073200069370   \\
+   \textbf{X6} &   1829.15146461355    &    455.478499142212   \\
+\end{tabular} 
+
+\begin{tabular}{ll}
+    \textbf{Residual Standard Deviation} &   304.854073561965 \\ 
+    \textbf{R-Squared} &  0.995479004577296  \\  
+\end{tabular}
+
+
+\begin{tabular}{lllll}
+   \textbf{Source of Variation} & \textbf{Degrees of Freedom} & \textbf{Sums of Squares} & \textbf{Mean Squares}  & \textbf{F Statistic} \\ 
+  \textbf{Regression} &  6  & 184172401.944494 &	30695400.3240823	& 330.285339234588  \\ 
+	\textbf{Residual} &  9  & 836424.055505915 &	92936.0061673238 \\ 
+\end{tabular} 
+
+<<Longley>>=
+Longley <- read.table(file=paste0(path,"Longley.txt"), header=TRUE)
+
+Longley.lm <- lm(y ~ .,data=Longley)
+summary(Longley.lm)
+anova(Longley.lm)
+@
+
+
+
+
+
+
+
+
+\end{document}
+
+\section{}
+Using the NoInt2 data set (http://www.itl.nist.gov/div898/strd/lls/data/Norris.shtml)
+
+\subsection*{Data Set Description}
+
+
+
+\subsection*{About the data set}
+
+\begin{description}
+   \item[]Data Set Properties
+   \item[Level of Difficulty]
+   \item[Model Class]
+   \item[Number of Parameters]
+   \item[Number of observations]
+   \item[Predictor variable(s)]
+   \item[Response variable]
+\end{description}
+
+\begin{tabular}{lll}
+   \textbf{Parameter} & \textbf{Estimate} & \textbf{Standard Deviation of Estimate}  \\ 
+	\textbf{Intercept} &  &  \\ 
+	\textbf{X} &   &   \\ 
+\end{tabular} 
+
+\begin{tabular}{ll}
+    \textbf{Residual Standard Deviation} &    \\ 
+    \textbf{R-Squared} &    \\  
+\end{tabular}
+
+
+\begin{tabular}{lllll}
+   \textbf{Source of Variation} & \textbf{Degrees of Freedom} & \textbf{Sums of Squares} & \textbf{Mean Squares}  & \textbf{F Statistic} \\ 
+   \textbf{Regression} &  &  &  &  \\ 
+	\textbf{Residual} &  &  &  &  \\ 
+\end{tabular} 
