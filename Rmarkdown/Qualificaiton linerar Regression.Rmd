@@ -1,0 +1,982 @@
+---
+title: "Qualification"
+author: "Nick Lauerman"
+date: "Monday, November 24, 2014"
+output: pdf_document
+---
+Quallification of R
+========================================================
+Explorations Using NIST datasets
+-------------------------------------------------------
+32-bit R and 32-bit Windows System 7
+--------------------------------------------------
+
+### Linear Regression using lm()
+
+````{r setup, tidy=FALSE}
+options(digits=15)
+path="~/R/workspace/qual/raw data/Linear Regression/"
+```
+#### Using [Norris.dat](http://www.itl.nist.gov/div898/strd/lls/data/Norris.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Norris.txt.
+
+The data file constist of 2 variables and 36 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  -0.262323073774029  |  0.232818234301152
+**X**| 1.00211681802045 |0.429796848199937E-03
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.884796396144373 
+**R-Squared**| 0.999993745883712 
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**|**Mean Squares**|**F Statistic **
+-------------------|------------------|------------------|------------|------------- 
+**Regression**| 1  |  4255954.13232369  |  4255954.13232369    |  5436385.54079785  
+**Residual**  | 34 |  26.6173985294224   |  0.782864662630069 
+````{r Norris, tidy=FALSE}
+Norris <- read.table(file=paste0(path,"Norris.txt"), header=TRUE)
+Norris.lm <- lm(y~x, data=Norris)
+summary(Norris.lm)
+anova(Norris.lm)
+```
+#### Using [Pontius.dat](http://www.itl.nist.gov/div898/strd/lls/data/pontius.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Norris.txt.
+
+The data file constist of 2 variables and 40 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression with a quadric term
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  0.673565789473684E-03           |  0.107938612033077E-03
+**X**|          0.732059160401003E-06           |  0.157817399981659E-09
+**x^2**|       -0.316081871345029E-14           |  0.486652849992036E-16
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.205177424076185E-03 
+**R-Squared**           |  0.999999900178537 
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 2                    |  15.6040343244198       | 7.80201716220991 |  185330865.995752   
+**Residual**           | 37                   |  0.155761768796992E-05  | 0.420977753505385E-07  
+````{r Pontius, tidy=FALSE}
+Pontius <- read.table(file=paste0(path,"Pontius.txt"), header=TRUE)
+Pontius.lm <- lm(y~x + I(x^2), data=Pontius)
+summary(Pontius.lm)
+anova(Pontius.lm)
+```
+#### Using [NoInt1.dat](http://www.itl.nist.gov/div898/strd/lls/data/NoInt1.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+NoInt1.txt.
+
+The data file constist of 2 variables and 11 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, with no intercept
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|             |  
+**X**|          2.07438016528926           |   0.165289256198347E-01
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  3.56753034006338 
+**R-Squared**           |  0.999365492298663
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 1                    |  200457.727272727       | 200457.727272727 |  15750.2500000000   
+**Residual**           | 10                   |  127.272727272727       | 12.7272727272727  
+````{r NoInt1, tidy=FALSE}
+NoInt1 <- read.table(file=paste0(path,"NoInt1.txt"), header=TRUE)
+NoInt1.lm <- lm(y~x + 0, data=NoInt1)
+summary(NoInt1.lm)
+anova(NoInt1.lm)
+```
+
+#### Using [NoInt2.dat](http://www.itl.nist.gov/div898/strd/lls/data/NoInt2.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+NoInt2.txt.
+
+The data file constist of 2 variables and 3 observations. 
+
+The first variable is the response variable (y) 
+and second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, with no intercept
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|             |  
+**X**|          0.727272727272727           |   0.420827318078432E-01
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.369274472937998 
+**R-Squared**           |  0.993348115299335
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 1                    |  40.7272727272727       | 40.7272727272727 |  298.666666666667   
+**Residual**           | 2                    |  0.272727272727273      | 0.136363636363636  
+````{r NoInt2, tidy=FALSE}
+NoInt2 <- read.table(file=paste0(path,"NoInt2.txt"), header=TRUE)
+NoInt2.lm <- lm(y~x + 0, data=NoInt2)
+summary(NoInt2.lm)
+anova(NoInt2.lm)
+```
+
+#### Using [Filip.dat](http://www.itl.nist.gov/div898/strd/lls/data/Filip.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Filip.txt.
+
+The data file constist of 2 variables and 82 observations. 
+
+The first variable is the response variable (y) 
+and second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, 10th order poly
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|     -1467.48961422980|       298.084530995537  
+**X**   |          -2772.17959193342|       559.779865474950 
+**X^2** | -2316.37108160893|       466.477572127796 
+**X^3** | -1127.97394098372  |     227.204274477751 
+**X^4** | -354.478233703349 |       71.6478660875927 
+**X^5** | -75.1242017393757  |     15.2897178747400 
+**X^6** | -10.8753180355343   |    2.23691159816033 
+**X^7** | -1.06221498588947    |   0.221624321934227 
+**X^8** | -0.670191154593408E-01 |      0.142363763154724E-01 
+**X^9** | -0.246781078275479E-02  |     0.535617408889821E-03 
+**X^10**| -0.402962525080404E-04   |    0.896632837373868E-05 
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.334801051324544E-02 
+**R-Squared**           |  0.996727416185620
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 10  | 0.242391619837339  | 0.242391619837339E-01  | 2162.43954511489    
+**Residual**           | 71  | 0.795851382172941E-03 |  0.112091743968020E-04   
+````{r Filip, tidy=FALSE}
+Filip <- read.table(file=paste0(path,"Filip.txt"), header=TRUE)
+
+Filip.lm <- lm(y ~ poly(x,10,raw = TRUE), data=Filip)
+summary(Filip.lm)
+anova(Filip.lm)
+```
+
+#### Using [Longley.dat](http://www.itl.nist.gov/div898/strd/lls/data/Longley.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Longley.txt.
+
+The data file constist of 7 variables and 16 observations. 
+
+The first variable is the response variable (y) 
+and 2-7 variables are the predictor variables (x1, x2, x3, x4, x5, x6).
+
+**Procedure:** Linear Least Squares Regression, 6 predictor terms
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  -3482258.63459582      | 890420.383607373   
+**X1**   |       15.0618722713733       |84.9149257747669 
+**X2** |         -0.358191792925910E-01  |     0.334910077722432E-01  
+**X3** |         -2.02022980381683      | 0.488399681651699  
+**X4** |         -1.03322686717359     |  0.214274163161675  
+**X5** |         -0.511041056535807E-01 |      0.226073200069370  
+**X6** |       1829.15146461355      | 455.478499142212  
+
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  304.854073561965 
+**R-Squared**           |  0.995479004577296
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 6 | 184172401.944494 | 30695400.3240823 | 330.285339234588    
+**Residual**           | 9 | 836424.055505915 | 92936.0061673238    
+````{r Longley, tidy=FALSE}
+Longley <- read.table(file=paste0(path,"Longley.txt"), header=TRUE)
+
+Longley.lm <- lm(y ~ .,
+                 data=Longley)
+summary(Longley.lm)
+anova(Longley.lm)
+```
+#### Using [Wampler1.dat](http://www.itl.nist.gov/div898/strd/lls/data/Wampler1.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Wampler1.txt.
+
+The data file constist of 2 variables and 21 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, 5th order poly
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  1.00000000000000     |  0.000000000000000    
+**X**   |       1.00000000000000     |  0.000000000000000 
+**X^2** |       1.00000000000000     |  0.000000000000000  
+**X^3** |       1.00000000000000     |  0.000000000000000 
+**X^4** |       1.00000000000000     |  0.000000000000000 
+**X^5** |       1.00000000000000     |  0.000000000000000  
+  
+
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.000000000000000 
+**R-Squared**           |  1.000000000000000
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 5 | 18814317208116.7 | 3762863441623.33  | Infinity     
+**Residual**           | 15 |  0.000000000000000 | 0.000000000000000     
+````{r Wampler1, tidy=FALSE}
+Wampler1 <- read.table(file=paste0(path,"Wampler1.txt"), header=TRUE)
+
+Wampler1.lm <- lm(y ~ poly(x,5,raw=T),
+                 data = Wampler1)
+summary(Wampler1.lm)
+anova(Wampler1.lm)
+```
+
+#### Using [Wampler2.dat](http://www.itl.nist.gov/div898/strd/lls/data/Wampler2.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Wampler2.txt.
+
+The data file constist of 2 variables and 21 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, 5th order poly
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  1.00000000000000     |  0.000000000000000    
+**X**   |       0.10000000000000     |  0.000000000000000 
+**X^2** |       0.100000000000000E-01     |  0.000000000000000  
+**X^3** |       0.100000000000000E-02     |  0.000000000000000 
+**X^4** |       0.100000000000000E-03     |  0.000000000000000 
+**X^5** |       0.100000000000000E-04     |  0.000000000000000  
+  
+
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.000000000000000 
+**R-Squared**           |  1.000000000000000
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 5  | 6602.91858365167|  1320.58371673033 | Infinity      
+**Residual**           | 15 |  0.000000000000000 | 0.000000000000000     
+````{r Wampler2, tidy=FALSE}
+Wampler2 <- read.table(file=paste0(path,"Wampler2.txt"), 
+                       header=TRUE)
+Wampler2.lm <- lm(y ~ poly(x,5,raw=T),
+                 data = Wampler2)
+summary(Wampler2.lm)
+anova(Wampler2.lm)
+```
+
+#### Using [Wampler3.dat](http://www.itl.nist.gov/div898/strd/lls/data/Wampler3.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Wampler3.txt.
+
+The data file constist of 2 variables and 21 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, 5th order poly
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  1.00000000000000    |   2152.32624678170     
+**X**   |       1.00000000000000     |  2363.55173469681  
+**X^2** |       1.00000000000000      | 779.343524331583  
+**X^3** |       1.00000000000000       |101.475507550350  
+**X^4** |       1.00000000000000    |   5.64566512170752  
+**X^5** |       1.00000000000000     |  0.112324854679312   
+  
+
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  2360.14502379268 
+**R-Squared**           |  0.999995559025820
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 5  |18814317208116.7 | 3762863441623.33 | 675524.458240122       
+**Residual**           | 15 | 83554268.0000000 |  5570284.53333333     
+````{r Wampler3, tidy=FALSE}
+Wampler3 <- read.table(file=paste0(path,"Wampler3.txt"), 
+                       header=TRUE)
+Wampler3.lm <- lm(y ~ poly(x,5,raw=T),
+                 data = Wampler3)
+summary(Wampler3.lm)
+anova(Wampler3.lm)
+```
+
+#### Using [Wampler4.dat](http://www.itl.nist.gov/div898/strd/lls/data/Wampler4.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Wampler4.txt.
+
+The data file constist of 2 variables and 21 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, 5th order poly
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  1.00000000000000    |   215232.624678170     
+**X**   |       1.00000000000000     |  236355.173469681   
+**X^2** |       1.00000000000000      | 77934.3524331583  
+**X^3** |       1.00000000000000       | 10147.5507550350  
+**X^4** |       1.00000000000000    |   564.566512170752  
+**X^5** |       1.00000000000000     |  11.2324854679312   
+  
+
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  236014.502379268 
+**R-Squared**           |  0.957478440825662
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 5  | 18814317208116.7 | 3762863441623.33 |  67.5524458240122       
+**Residual**           | 15 | 835542680000.000 | 55702845333.3333      
+````{r Wampler4, tidy=FALSE}
+Wampler4 <- read.table(file=paste0(path,"Wampler4.txt"), 
+                       header=TRUE)
+Wampler4.lm <- lm(y ~ poly(x,5,raw=T),
+                 data = Wampler4)
+summary(Wampler4.lm)
+anova(Wampler4.lm)
+```
+
+#### Using [Wampler5.dat](http://www.itl.nist.gov/div898/strd/lls/data/Wampler5.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Wampler5.txt.
+
+The data file constist of 2 variables and 21 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, 5th order poly
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  1.00000000000000    |   21523262.4678170     
+**X**   |       1.00000000000000     |  23635517.3469681   
+**X^2** |       1.00000000000000      | 7793435.24331583   
+**X^3** |       1.00000000000000      | 1014755.07550350  
+**X^4** |       1.00000000000000    |   56456.6512170752  
+**X^5** |       1.00000000000000     |  1123.24854679312   
+  
+
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  23601450.2379268 
+**R-Squared**           |  0.224668921574940E-02
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 5  | 18814317208116.7 | 3762863441623.33 |  0.675524458240122E-02         
+**Residual**           | 15 | 0.835542680000000E+16 | 557028453333333       
+````{r Wampler5, tidy=FALSE}
+Wampler5 <- read.table(file=paste0(path,"Wampler5.txt"), 
+                       header=TRUE)
+Wampler5.lm <- lm(y ~ poly(x,5,raw=T),
+                 data = Wampler5)
+summary(Wampler5.lm)
+anova(Wampler5.lm)
+```
+
+### Linear Regression using glm()
+
+#### Using [Norris.dat](http://www.itl.nist.gov/div898/strd/lls/data/Norris.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Norris.txt.
+
+The data file constist of 2 variables and 36 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  -0.262323073774029  |  0.232818234301152
+**X**| 1.00211681802045 |0.429796848199937E-03
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.884796396144373 
+**R-Squared**| 0.999993745883712 
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**|**Mean Squares**|**F Statistic **
+-------------------|------------------|------------------|------------|------------- 
+**Regression**| 1  |  4255954.13232369  |  4255954.13232369    |  5436385.54079785  
+**Residual**  | 34 |  26.6173985294224   |  0.782864662630069 
+````{r Norris glm, tidy=FALSE}
+Norris <- read.table(file=paste0(path,"Norris.txt"), header=TRUE)
+Norris.glm <- glm(y~x, data=Norris)
+summary(Norris.glm)
+anova(Norris.glm)
+```
+#### Using [Pontius.dat](http://www.itl.nist.gov/div898/strd/lls/data/pontius.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Norris.txt.
+
+The data file constist of 2 variables and 40 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression with a quadric term
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  0.673565789473684E-03           |  0.107938612033077E-03
+**X**|          0.732059160401003E-06           |  0.157817399981659E-09
+**x^2**|       -0.316081871345029E-14           |  0.486652849992036E-16
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.205177424076185E-03 
+**R-Squared**           |  0.999999900178537 
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 2                    |  15.6040343244198       | 7.80201716220991 |  185330865.995752   
+**Residual**           | 37                   |  0.155761768796992E-05  | 0.420977753505385E-07  
+````{r Pontius glm, tidy=FALSE}
+Pontius <- read.table(file=paste0(path,"Pontius.txt"), header=TRUE)
+Pontius.glm <- glm(y~x + I(x^2), data=Pontius)
+summary(Pontius.glm)
+anova(Pontius.glm)
+```
+#### Using [NoInt1.dat](http://www.itl.nist.gov/div898/strd/lls/data/NoInt1.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+NoInt1.txt.
+
+The data file constist of 2 variables and 11 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, with no intercept
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|             |  
+**X**|          2.07438016528926           |   0.165289256198347E-01
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  3.56753034006338 
+**R-Squared**           |  0.999365492298663
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 1                    |  200457.727272727       | 200457.727272727 |  15750.2500000000   
+**Residual**           | 10                   |  127.272727272727       | 12.7272727272727  
+````{r NoInt1 glm, tidy=FALSE}
+NoInt1 <- read.table(file=paste0(path,"NoInt1.txt"), header=TRUE)
+NoInt1.glm <- glm(y~x + 0, data=NoInt1)
+summary(NoInt1.glm)
+anova(NoInt1.glm)
+```
+
+#### Using [NoInt2.dat](http://www.itl.nist.gov/div898/strd/lls/data/NoInt2.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+NoInt2.txt.
+
+The data file constist of 2 variables and 3 observations. 
+
+The first variable is the response variable (y) 
+and second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, with no intercept
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|             |  
+**X**|          0.727272727272727           |   0.420827318078432E-01
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.369274472937998 
+**R-Squared**           |  0.993348115299335
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 1                    |  40.7272727272727       | 40.7272727272727 |  298.666666666667   
+**Residual**           | 2                    |  0.272727272727273      | 0.136363636363636  
+````{r NoInt2 glm, tidy=FALSE}
+NoInt2 <- read.table(file=paste0(path,"NoInt2.txt"), header=TRUE)
+NoInt2.glm <- glm(y~x + 0, data=NoInt2)
+summary(NoInt2.glm)
+anova(NoInt2.glm)
+```
+
+#### Using [Filip.dat](http://www.itl.nist.gov/div898/strd/lls/data/Filip.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Filip.txt.
+
+The data file constist of 2 variables and 82 observations. 
+
+The first variable is the response variable (y) 
+and second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, 10th order poly
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|     -1467.48961422980|       298.084530995537  
+**X**   |          -2772.17959193342|       559.779865474950 
+**X^2** | -2316.37108160893|       466.477572127796 
+**X^3** | -1127.97394098372  |     227.204274477751 
+**X^4** | -354.478233703349 |       71.6478660875927 
+**X^5** | -75.1242017393757  |     15.2897178747400 
+**X^6** | -10.8753180355343   |    2.23691159816033 
+**X^7** | -1.06221498588947    |   0.221624321934227 
+**X^8** | -0.670191154593408E-01 |      0.142363763154724E-01 
+**X^9** | -0.246781078275479E-02  |     0.535617408889821E-03 
+**X^10**| -0.402962525080404E-04   |    0.896632837373868E-05 
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.334801051324544E-02 
+**R-Squared**           |  0.996727416185620
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 10  | 0.242391619837339  | 0.242391619837339E-01  | 2162.43954511489    
+**Residual**           | 71  | 0.795851382172941E-03 |  0.112091743968020E-04   
+````{r Filip glm, tidy=FALSE}
+Filip <- read.table(file=paste0(path,"Filip.txt"), header=TRUE)
+
+Filip.glm <- glm(y ~ poly(x,10,raw = TRUE), data=Filip)
+summary(Filip.glm)
+anova(Filip.glm)
+```
+
+#### Using [Longley.dat](http://www.itl.nist.gov/div898/strd/lls/data/Longley.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Longley.txt.
+
+The data file constist of 7 variables and 16 observations. 
+
+The first variable is the response variable (y) 
+and 2-7 variables are the predictor variables (x1, x2, x3, x4, x5, x6).
+
+**Procedure:** Linear Least Squares Regression, 6 predictor terms
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  -3482258.63459582      | 890420.383607373   
+**X1**   |       15.0618722713733       |84.9149257747669 
+**X2** |         -0.358191792925910E-01  |     0.334910077722432E-01  
+**X3** |         -2.02022980381683      | 0.488399681651699  
+**X4** |         -1.03322686717359     |  0.214274163161675  
+**X5** |         -0.511041056535807E-01 |      0.226073200069370  
+**X6** |       1829.15146461355      | 455.478499142212  
+
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  304.854073561965 
+**R-Squared**           |  0.995479004577296
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 6 | 184172401.944494 | 30695400.3240823 | 330.285339234588    
+**Residual**           | 9 | 836424.055505915 | 92936.0061673238    
+````{r Longley glm, tidy=FALSE}
+Longley <- read.table(file=paste0(path,"Longley.txt"), header=TRUE)
+
+Longley.glm <- glm(y ~ .,
+                 data=Longley)
+summary(Longley.glm)
+anova(Longley.glm)
+```
+#### Using [Wampler1.dat](http://www.itl.nist.gov/div898/strd/lls/data/Wampler1.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Wampler1.txt.
+
+The data file constist of 2 variables and 21 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, 5th order poly
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  1.00000000000000     |  0.000000000000000    
+**X**   |       1.00000000000000     |  0.000000000000000 
+**X^2** |       1.00000000000000     |  0.000000000000000  
+**X^3** |       1.00000000000000     |  0.000000000000000 
+**X^4** |       1.00000000000000     |  0.000000000000000 
+**X^5** |       1.00000000000000     |  0.000000000000000  
+  
+
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.000000000000000 
+**R-Squared**           |  1.000000000000000
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 5 | 18814317208116.7 | 3762863441623.33  | Infinity     
+**Residual**           | 15 |  0.000000000000000 | 0.000000000000000     
+````{r Wampler1 glm, tidy=FALSE}
+Wampler1 <- read.table(file=paste0(path,"Wampler1.txt"), header=TRUE)
+
+Wampler1.glm <- glm(y ~ poly(x,5,raw=T),
+                 data = Wampler1)
+summary(Wampler1.glm)
+anova(Wampler1.glm)
+```
+
+#### Using [Wampler2.dat](http://www.itl.nist.gov/div898/strd/lls/data/Wampler2.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Wampler2.txt.
+
+The data file constist of 2 variables and 21 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, 5th order poly
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  1.00000000000000     |  0.000000000000000    
+**X**   |       0.10000000000000     |  0.000000000000000 
+**X^2** |       0.100000000000000E-01     |  0.000000000000000  
+**X^3** |       0.100000000000000E-02     |  0.000000000000000 
+**X^4** |       0.100000000000000E-03     |  0.000000000000000 
+**X^5** |       0.100000000000000E-04     |  0.000000000000000  
+  
+
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.000000000000000 
+**R-Squared**           |  1.000000000000000
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 5  | 6602.91858365167|  1320.58371673033 | Infinity      
+**Residual**           | 15 |  0.000000000000000 | 0.000000000000000     
+````{r Wampler2 glm, tidy=FALSE}
+Wampler2 <- read.table(file=paste0(path,"Wampler2.txt"), 
+                       header=TRUE)
+Wampler2.glm <- glm(y ~ poly(x,5,raw=T),
+                 data = Wampler2)
+summary(Wampler2.glm)
+anova(Wampler2.glm)
+```
+
+#### Using [Wampler3.dat](http://www.itl.nist.gov/div898/strd/lls/data/Wampler3.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Wampler3.txt.
+
+The data file constist of 2 variables and 21 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, 5th order poly
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  1.00000000000000    |   2152.32624678170     
+**X**   |       1.00000000000000     |  2363.55173469681  
+**X^2** |       1.00000000000000      | 779.343524331583  
+**X^3** |       1.00000000000000       |101.475507550350  
+**X^4** |       1.00000000000000    |   5.64566512170752  
+**X^5** |       1.00000000000000     |  0.112324854679312   
+  
+
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  2360.14502379268 
+**R-Squared**           |  0.999995559025820
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 5  |18814317208116.7 | 3762863441623.33 | 675524.458240122       
+**Residual**           | 15 | 83554268.0000000 |  5570284.53333333     
+````{r Wampler3 glm, tidy=FALSE}
+Wampler3 <- read.table(file=paste0(path,"Wampler3.txt"), 
+                       header=TRUE)
+Wampler3.glm <- glm(y ~ poly(x,5,raw=T),
+                 data = Wampler3)
+summary(Wampler3.glm)
+anova(Wampler3.glm)
+```
+
+#### Using [Wampler4.dat](http://www.itl.nist.gov/div898/strd/lls/data/Wampler4.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Wampler4.txt.
+
+The data file constist of 2 variables and 21 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, 5th order poly
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  1.00000000000000    |   215232.624678170     
+**X**   |       1.00000000000000     |  236355.173469681   
+**X^2** |       1.00000000000000      | 77934.3524331583  
+**X^3** |       1.00000000000000       | 10147.5507550350  
+**X^4** |       1.00000000000000    |   564.566512170752  
+**X^5** |       1.00000000000000     |  11.2324854679312   
+  
+
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  236014.502379268 
+**R-Squared**           |  0.957478440825662
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 5  | 18814317208116.7 | 3762863441623.33 |  67.5524458240122       
+**Residual**           | 15 | 835542680000.000 | 55702845333.3333      
+````{r Wampler4 glm, tidy=FALSE}
+Wampler4 <- read.table(file=paste0(path,"Wampler4.txt"), 
+                       header=TRUE)
+Wampler4.glm <- glm(y ~ poly(x,5,raw=T),
+                 data = Wampler4)
+summary(Wampler4.glm)
+anova(Wampler4.glm)
+```
+
+#### Using [Wampler5.dat](http://www.itl.nist.gov/div898/strd/lls/data/Wampler5.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Wampler5.txt.
+
+The data file constist of 2 variables and 21 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression, 5th order poly
+
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  1.00000000000000    |   21523262.4678170     
+**X**   |       1.00000000000000     |  23635517.3469681   
+**X^2** |       1.00000000000000      | 7793435.24331583   
+**X^3** |       1.00000000000000      | 1014755.07550350  
+**X^4** |       1.00000000000000    |   56456.6512170752  
+**X^5** |       1.00000000000000     |  1123.24854679312   
+  
+
+
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  23601450.2379268 
+**R-Squared**           |  0.224668921574940E-02
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**      |**Mean Squares**  |**F Statistic **
+-----------------------|----------------------|-------------------------|------------------|------------- 
+**Regression**         | 5  | 18814317208116.7 | 3762863441623.33 |  0.675524458240122E-02         
+**Residual**           | 15 | 0.835542680000000E+16 | 557028453333333       
+````{r Wampler5 glm, tidy=FALSE}
+Wampler5 <- read.table(file=paste0(path,"Wampler5.txt"), 
+                       header=TRUE)
+Wampler5.glm <- glm(y ~ poly(x,5,raw=T),
+                 data = Wampler5)
+summary(Wampler5.glm)
+anova(Wampler5.glm)
+```

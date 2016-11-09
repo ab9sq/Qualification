@@ -1,0 +1,40 @@
+Quallification of R
+========================================================
+Explorations Using NIST datasets
+-------------------------------------------------------
+### non-Linear Regression using lm()
+
+````{r setup, tidy=FALSE}
+options(digits=15)
+path="~/R/workspace/qual/raw data/nonlinear regression/"
+```
+#### Using [Norris.dat](http://www.itl.nist.gov/div898/strd/lls/data/Norris.shtml) file.
+The file was cleaned up removing the header informatin and saving as
+Norris.txt.
+
+The data file constist of 2 variables and 36 observations. 
+
+The first variable is the response variable (y) 
+and the second variable is the predictor variable (x).
+
+**Procedure:** Linear Least Squares Regression
+Expected results:
+
+**Parameter**|**Estimate**|**Standard Deviation of Estimate**
+-----------|-----------|----------
+**intercept**|  -0.262323073774029  |  0.232818234301152
+**X**| 1.00211681802045 |0.429796848199937E-03
+
+**Residual**|.
+------------|-----------
+**Standard Deviation**  |  0.884796396144373 
+**R-Squared**| 0.999993745883712 
+
+
+**Certified Analysis of Variance Table**
+
+ 
+**Source of Variation**|**Degrees of Freedom**|**Sums of Squares**|**Mean Squares**|**F Statistic **
+-------------------|------------------|------------------|------------|------------- 
+**Regression**| 1  |  4255954.13232369  |  4255954.13232369    |  5436385.54079785  
+**Residual**  | 34 |  26.6173985294224   |  0.782864662630069 
