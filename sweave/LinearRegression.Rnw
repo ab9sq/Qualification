@@ -33,16 +33,18 @@ reason stated
 \end{description}
 <<setup>>=
 options(digits = 15)
-path="~/R/workspace/qual/raw data/Linear Regression/"
+path="~/R/workspace/qualification/raw data/Linear Regression/"
 @
 \subsection{Computer Information}
 The degree of accuracy  that can be expected from a computer if a function of several
-factors including the processor used. R provides a method to determine numeric tolerance based on 
-David Goldberg (1991), ``What Every Computer Scientist Should Know About Floating-Point Arithmetic''
-, ACM Computing Surveys, 23/1, 5 \- 48, also available via http://www.validlab.com/goldberg/paper.pdf.
+factors including the processor used. R provides a method to determine 
+numeric tolerance based on David Goldberg (1991), 
+``What Every Computer Scientist Should Know About Floating-Point Arithmetic'', 
+ACM Computing Surveys, 23/1, 5-48, also available via 
+http://www.validlab.com/goldberg/paper.pdf.
 
-This value can be treated as the error value for the computer and for accuracy beyond requires careful
-consideration.
+This value can be treated as the error value for the computer and for accuracy 
+beyond requires careful consideration.
 
 <<>>=
 .Machine$double.eps ^ 0.5
