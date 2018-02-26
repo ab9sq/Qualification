@@ -1,13 +1,17 @@
+#
+# Nick's specials
+#
+#
 #Project specific
 todo*.*
 note*.*
-
+#
+#     R specifics
+#
 # R files
 cache/*
 .Ruserdata
 .RData
-
-
 
 # History files
 .Rhistory
@@ -35,13 +39,11 @@ cache/*
 # Sweave in RStudio
 *-concordance.tex
 
-
-
-
-
+#        
+#           For LaTeX & Sweave
+#
 #TeXStudio
 *.txss
-
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
@@ -55,10 +57,11 @@ cache/*
 ## Intermediate documents:
 *.dvi
 *-converted-to.*
+
 # these rules might exclude image files for figures etc.
-# *.ps
-# *.eps
-# *.pdf
+ *.ps
+ *.eps
+# *.pdf      #cannot use as PDF are in reference materials may need to adjust later.
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
