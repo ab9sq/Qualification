@@ -1,6 +1,16 @@
 \documentclass[10pt]{article}
 
 \usepackage{url}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
 \usepackage[toc]{multitoc}
 \renewcommand*{\multicolumntoc}{2}
 %\setlength{\columnseprule}{0.5pt}
@@ -43,7 +53,7 @@ factors including the processor used. R provides a method to determine
 numeric tolerance based on David Goldberg (1991), 
 ``What Every Computer Scientist Should Know About Floating-Point Arithmetic'', 
 ACM Computing Surveys, 23/1, 5-48, also available via 
-http://www.validlab.com/goldberg/paper.pdf.
+\url{http://www.validlab.com/goldberg/paper.pdf}.
 
 This value can be treated as the error value for the computer and for accuracy 
 beyond requires careful consideration.
@@ -96,7 +106,7 @@ As noted in the  General Background Information producing correct results for al
 
 
 \section{NumAcc4 Data Set}
-Using the NumAcc4.dat (http://www.itl.nist.gov/div898/strd/univ/numacc4.html) file. 
+Using the NumAcc4.dat \url{http://www.itl.nist.gov/div898/strd/univ/numacc4.html} file. 
 
 \subsection*{Data Set Description}
 
@@ -126,7 +136,7 @@ acf(NumAcc4$V1, plot=F, lag.max=1)
 @
 
 \section{NumAcc3 Data Set}
-Using the NumAcc3.dat (http://www.itl.nist.gov/div898/strd/univ/numacc3.html) file. 
+Using the NumAcc3.dat \url{http://www.itl.nist.gov/div898/strd/univ/numacc3.html} file. 
 
 \subsection*{Data Set Description}
 
@@ -156,7 +166,7 @@ acf(NumAcc3$V1, plot=F, lag.max=1)
 @
 
 \section{NumAcc2 Data Set}
-Using the NumAcc2.dat (http://www.itl.nist.gov/div898/strd/univ/numacc2.html) file.
+Using the NumAcc2.dat \url{http://www.itl.nist.gov/div898/strd/univ/numacc2.html} file.
 
 \subsection*{Data Set Description}
 
@@ -189,7 +199,7 @@ acf(NumAcc2$V1, plot=F, lag.max=1)
 
 
 \section{NumAcc1 Data Set}
-Using the NumAcc1.dat (http://www.itl.nist.gov/div898/strd/univ/numacc1.html) file.
+Using the NumAcc1.dat \url{http://www.itl.nist.gov/div898/strd/univ/numacc1.html} file.
 
 \subsection*{Data Set Description}
 
@@ -220,7 +230,7 @@ acf(NumAcc1$V1, plot=F, lag.max=1)
 @
 
 \section{Michelso Data Set}
-Using Michelso.dat(http://www.itl.nist.gov/div898/strd/univ/michelso.html) file. 
+Using Michelso.dat\url{http://www.itl.nist.gov/div898/strd/univ/michelso.html} file. 
 
 \subsection*{Data Set Description}
 
@@ -251,7 +261,7 @@ acf(Michelso$V1, plot=F, lag.max=1)
 @
 
 \section{Mavro Data Set}
-Using Mavro.dat(http://www.itl.nist.gov/div898/strd/univ/mavvo.html) file.
+Using Mavro.dat\url{http://www.itl.nist.gov/div898/strd/univ/mavvo.html} file.
 
 \subsection*{Data Set Description}
 This "real world" dataset is the result of a study by Radu Mavrodineaunu, a chemist at the National Institute of Standards \& Technology (NIST). The purpose of the study was to determine a certified transmittance value that may be attached to the particular of filter under study. The 50 transmittance valuess were collected equi-spaced in time at a sampling rate of 10 observations per second.
@@ -281,7 +291,7 @@ acf(Mavro$V1, plot=F, lag.max=1)
 @
 
 \section{Lew Data Set}
-Using Lew.dat (http://www.itl.nist.gov/div898/strd/univ/lew.html) file.
+Using Lew.dat \url{http://www.itl.nist.gov/div898/strd/univ/lew.html} file.
 
 \subsection*{Data Set Description}
 
@@ -312,7 +322,7 @@ acf(Lew$V1, plot=F, lag.max=1)
 @
 
 \section{Lottery}
-Using Lottery.dat (http://www.itl.nist.gov/div898/strd/univ/lottery.html) file.
+Using Lottery.dat \url{http://www.itl.nist.gov/div898/strd/univ/lottery.html} file.
 
 \subsection*{Data Set Description}
 
@@ -344,7 +354,7 @@ acf(Lottery$V1, plot=F, lag.max=1)
 @
 
 \section{Pi Digits Data Set}
-Using PiDigits.dat (http://www.itl.nist.gov/div898/strd/univ/pidigits.html) file.
+Using PiDigits.dat \url{http://www.itl.nist.gov/div898/strd/univ/pidigits.html} file.
 \subsection*{Data Set Description}
 
 This dataset consists of the first 5000 digits of the mathemtatical constant pi (= 3.1415926535897932384...). These 5000 digits were reported in Mathematics of Computation, January 1962, page 76. Interesting number-theoretic questions involving pi digits are 1) are the digits uniformly distributed? and 2) is there serial correlation between successive digits?
