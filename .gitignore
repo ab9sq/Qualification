@@ -7,7 +7,7 @@ todo*.*
 note*.*
 #
 # Word
-*.docx
+*/R background FAQ.docx
 #
 # temp files
 *.tmp
