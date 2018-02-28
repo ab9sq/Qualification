@@ -6,6 +6,12 @@
 todo*.*
 note*.*
 #
+# Word
+*.docx
+#
+# temp files
+*.tmp
+
 #     R specifics
 #
 # R files
