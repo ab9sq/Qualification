@@ -43,7 +43,7 @@ reason stated
    \item[path] Sets the path to the directory were the data sets are stored.
 \end{description}
 <<setup>>=
-options(digits = 15)
+options(digits = 22)
 path="~/R/workspace/Qualification/raw data/"
 @
 \subsection{Computer Information}

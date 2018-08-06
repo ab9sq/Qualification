@@ -42,7 +42,7 @@ reason stated
    \item[path] Sets the path to the directory were the data sets are stored.
 \end{description}
 <<setup>>=
-options(digits = 15)
+options(digits = 22)
 path="~/R/workspace/qualification/raw data/Linear Regression/"
 @
 \subsection{Computer Information}
@@ -86,7 +86,8 @@ If your code fails to produce correct results for a dataset of higher level of d
 We plan to update this collection of datasets, and welcome your feedback on specific datasets to include, and on other ways to improve this web service.
 \end{quote}
 
-\section{Norris Data Set}
+\section{The Data Sets}
+\subsection{Norris Data Set}
 Using the Norris data set \url{://www.itl.nist.gov/div898/strd/lls/data/Norris.shtml}
 \subsection*{Data Set Description}
 
@@ -136,7 +137,7 @@ anova(Norris.lm)
 @
 
 
-\section{Pontius}
+\subsection{Pontius}
 Using the Pontius data set \url{://www.itl.nist.gov/div898/strd/lls/data/Pontius.shtml}
 
 \subsection*{Data Set Description}
@@ -181,7 +182,7 @@ summary(Pontius.lm)
 anova(Pontius.lm)
 @
 
-\section{NoInt1}
+\subsection{NoInt1}
 Using the NoInt1 data set \url{://www.itl.nist.gov/div898/strd/lls/data/NoInt1.shtml}
 
 \subsection*{Data Set Description}
@@ -225,7 +226,7 @@ summary(NoInt1.lm)
 anova(NoInt1.lm)
 @
 
-\section{NoInt2}
+\subsection{NoInt2}
 Using the NoInt2 data set \url{://www.itl.nist.gov/div898/strd/lls/data/NoInt2.shtml}
 
 \subsection*{Data Set Description}
@@ -270,7 +271,7 @@ anova(NoInt2.lm)
 @
 
 
-\section{Filip}
+\subsection{Filip}
 Using the Filip data set \url{://www.itl.nist.gov/div898/strd/lls/data/Filip.shtml}
 
 \subsection*{Data Set Description}
@@ -341,7 +342,7 @@ anova(Filip2.lm)
 
 
 
-\section{Longley}
+\subsection{Longley}
 Using the Longley data set \url{://www.itl.nist.gov/div898/strd/lls/data/Longley.shtml}
 
 \subsection*{Data Set Description}

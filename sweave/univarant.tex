@@ -45,7 +45,7 @@ reason stated
 \end{description}
 \begin{Schunk}
 \begin{Sinput}
-> options(digits = 15)
+> options(digits = 22)
 > path="~/R/workspace/Qualification/raw data/"
 \end{Sinput}
 \end{Schunk}
@@ -65,7 +65,7 @@ beyond requires careful consideration.
 > .Machine$double.eps ^ 0.5
 \end{Sinput}
 \begin{Soutput}
-[1] 1.49011611938477e-08
+[1] 1.4901161193847656e-08
 \end{Soutput}
 \end{Schunk}
 \subsection{R Information}
@@ -81,14 +81,14 @@ os             mingw32
 system         x86_64, mingw32             
 status                                     
 major          3                           
-minor          4.3                         
-year           2017                        
-month          11                          
-day            30                          
-svn rev        73796                       
+minor          5.1                         
+year           2018                        
+month          07                          
+day            02                          
+svn rev        74947                       
 language       R                           
-version.string R version 3.4.3 (2017-11-30)
-nickname       Kite-Eating Tree            
+version.string R version 3.5.1 (2018-07-02)
+nickname       Feather Spray               
 \end{Soutput}
 \end{Schunk}
 
@@ -161,13 +161,13 @@ This generated/fabricated dataset consists of 1001 9-digit floating-point values
 > mean(NumAcc4$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 10000000.2
+[1] 10000000.199999999
 \end{Soutput}
 \begin{Sinput}
 > sd(NumAcc4$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.100000000558794
+[1] 0.10000000055879354
 \end{Soutput}
 \begin{Sinput}
 > acf(NumAcc4$V1, plot=F, lag.max=1)
@@ -215,7 +215,7 @@ This generated/fabricated dataset consists of 1001 8-digit floating-point values
 > sd(NumAcc3$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.100000000034925
+[1] 0.1000000000349246
 \end{Soutput}
 \begin{Sinput}
 > acf(NumAcc3$V1, plot=F, lag.max=1)
@@ -265,7 +265,7 @@ This generated/fabricated dataset consists of 1001 2-digit floating-point values
 > sd(NumAcc2$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.1
+[1] 0.099999999999999978
 \end{Soutput}
 \begin{Sinput}
 > acf(NumAcc2$V1, plot=F, lag.max=1)
@@ -358,13 +358,13 @@ This "real world" dataset is the result of the classic study conducted by Michel
 > mean(Michelso$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 299.8524
+[1] 299.85239999999999
 \end{Soutput}
 \begin{Sinput}
 > sd(Michelso$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.0790105478190507
+[1] 0.079010547819050661
 \end{Soutput}
 \begin{Sinput}
 > acf(Michelso$V1, plot=F, lag.max=1)
@@ -406,13 +406,13 @@ This "real world" dataset is the result of a study by Radu Mavrodineaunu, a chem
 > mean(Mavro$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 2.001856
+[1] 2.0018560000000001
 \end{Soutput}
 \begin{Sinput}
 > sd(Mavro$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.000429123454003085
+[1] 0.0004291234540030854
 \end{Soutput}
 \begin{Sinput}
 > acf(Mavro$V1, plot=F, lag.max=1)
@@ -461,7 +461,7 @@ This "real world" dataset is the result of a study by H. S. Lew of the Structure
 > sd(Lew$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 277.332168044316
+[1] 277.33216804431612
 \end{Soutput}
 \begin{Sinput}
 > acf(Lew$V1, plot=F, lag.max=1)
@@ -505,13 +505,13 @@ This dataset consists of 218 3-digit numbers (from 000 to 999) resulting from th
 > mean(Lottery$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 518.95871559633
+[1] 518.95871559633031
 \end{Soutput}
 \begin{Sinput}
 > sd(Lottery$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 291.699727470969
+[1] 291.69972747096909
 \end{Soutput}
 \begin{Sinput}
 > acf(Lottery$V1, plot=F, lag.max=1)
@@ -554,13 +554,13 @@ This dataset consists of the first 5000 digits of the mathemtatical constant pi 
 > mean(PiDigits$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 4.5348
+[1] 4.5347999999999997
 \end{Soutput}
 \begin{Sinput}
 > sd(PiDigits$V1)
 \end{Sinput}
 \begin{Soutput}
-[1] 2.86733906028871
+[1] 2.8673390602887081
 \end{Soutput}
 \begin{Sinput}
 > acf(PiDigits$V1, plot=F, lag.max=1)

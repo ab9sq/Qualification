@@ -44,7 +44,7 @@ reason stated
 \end{description}
 \begin{Schunk}
 \begin{Sinput}
-> options(digits = 15)
+> options(digits = 22)
 > path="~/R/workspace/qualification/raw data/Linear Regression/"
 \end{Sinput}
 \end{Schunk}
@@ -64,7 +64,7 @@ beyond requires careful consideration.
 > .Machine$double.eps ^ 0.5
 \end{Sinput}
 \begin{Soutput}
-[1] 1.49011611938477e-08
+[1] 1.4901161193847656e-08
 \end{Soutput}
 \end{Schunk}
 \subsection{R Information}
@@ -113,7 +113,8 @@ If your code fails to produce correct results for a dataset of higher level of d
 We plan to update this collection of datasets, and welcome your feedback on specific datasets to include, and on other ways to improve this web service.
 \end{quote}
 
-\section{Norris Data Set}
+\section{The Data Sets}
+\subsection{Norris Data Set}
 Using the Norris data set \url{://www.itl.nist.gov/div898/strd/lls/data/Norris.shtml}
 \subsection*{Data Set Description}
 
@@ -166,21 +167,25 @@ Call:
 lm(formula = y ~ x, data = Norris)
 
 Residuals:
-             Min               1Q           Median               3Q 
--2.3523781286599 -0.5326967162014 -0.0296292259639  0.6000277736811 
-             Max 
- 1.7897858528800 
+                  Min                    1Q                Median 
+-2.352378128659911916 -0.532696716201364384 -0.029629225963878517 
+                   3Q                   Max 
+ 0.600027773681106935  1.789785852880034112 
 
 Coefficients:
-                    Estimate       Std. Error    t value Pr(>|t|)    
-(Intercept) -0.2623230737741  0.2328182343012   -1.12673  0.26775    
-x            1.0021168180205  0.0004297968482 2331.60579  < 2e-16 ***
+                           Estimate              Std. Error            t value
+(Intercept) -0.26232307377411717697  0.23281823430115430873   -1.1267300000000
+x            1.00211681802045426970  0.00042979684819994022 2331.6057900000001
+            Pr(>|t|)    
+(Intercept)  0.26775    
+x            < 2e-16 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 
-Residual standard error: 0.884796396144 on 34 degrees of freedom
-Multiple R-squared:  0.999993745884,	Adjusted R-squared:  0.999993561939 
-F-statistic:  5436385.5408 on 1 and 34 DF,  p-value: < 2.220446049e-16
+Residual standard error: 0.88479639614437944 on 34 degrees of freedom
+Multiple R-squared:  0.9999937458837117044,	Adjusted R-squared:  0.9999935619391150388 
+F-statistic: 5436385.540797759779 on 1 and 34 DF,  p-value: < 2.2204460492503131e-16
 \end{Soutput}
 \begin{Sinput}
 > anova(Norris.lm)
@@ -189,16 +194,20 @@ F-statistic:  5436385.5408 on 1 and 34 DF,  p-value: < 2.220446049e-16
 Analysis of Variance Table
 
 Response: y
-          Df         Sum Sq        Mean Sq      F value     Pr(>F)    
-x          1 4255954.132324 4255954.132324 5436385.5408 < 2.22e-16 ***
-Residuals 34      26.617399       0.782865                            
+          Df                Sum Sq                Mean Sq            F value
+x          1 4255954.1323236934841 4.2559541323236935e+06 5436385.5407999996
+Residuals 34      26.6173985294228 7.8286466263010002e-01                   
+              Pr(>F)    
+x         < 2.22e-16 ***
+Residuals               
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 \end{Soutput}
 \end{Schunk}
 
 
-\section{Pontius}
+\subsection{Pontius}
 Using the Pontius data set \url{://www.itl.nist.gov/div898/strd/lls/data/Pontius.shtml}
 
 \subsection*{Data Set Description}
@@ -247,22 +256,27 @@ Call:
 lm(formula = y ~ x + I(x^2), data = Pontius)
 
 Residuals:
-               Min                 1Q             Median                 3Q 
--4.46840225564e-04 -1.57827067669e-04  3.81729323308e-05  1.08788533835e-04 
-               Max 
- 4.23453007519e-04 
+                    Min                      1Q                  Median 
+-4.4684022556417666e-04 -1.5782706766922605e-04  3.8172932330817434e-05 
+                     3Q                     Max 
+ 1.0878853383451323e-04  4.2345300751879777e-04 
 
 Coefficients:
-                      Estimate         Std. Error    t value   Pr(>|t|)    
-(Intercept)  6.73565789474e-04  1.07938612033e-04    6.24027 2.9705e-07 ***
-x            7.32059160401e-07  1.57817399982e-10 4638.64669 < 2.22e-16 ***
-I(x^2)      -3.16081871345e-15  4.86652849992e-17  -64.95017 < 2.22e-16 ***
+                           Estimate              Std. Error
+(Intercept)  6.7356578947353482e-04  1.0793861203308400e-04
+x            7.3205916040100258e-07  1.5781739998166896e-10
+I(x^2)      -3.1608187134503184e-15  4.8665284999206759e-17
+                          t value   Pr(>|t|)    
+(Intercept)    6.2402699999999998 2.9705e-07 ***
+x           4638.6466899999995803 < 2.22e-16 ***
+I(x^2)       -64.9501700000000000 < 2.22e-16 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 
-Residual standard error: 0.000205177424076 on 37 degrees of freedom
-Multiple R-squared:  0.999999900179,	Adjusted R-squared:  0.999999894783 
-F-statistic: 185330865.996 on 2 and 37 DF,  p-value: < 2.220446049e-16
+Residual standard error: 0.00020517742407619811 on 37 degrees of freedom
+Multiple R-squared:  0.9999999001785371266,	Adjusted R-squared:  0.9999998947827823947 
+F-statistic:  185330865.995727241 on 2 and 37 DF,  p-value: < 2.2204460492503131e-16
 \end{Soutput}
 \begin{Sinput}
 > anova(Pontius.lm)
@@ -271,16 +285,21 @@ F-statistic: 185330865.996 on 2 and 37 DF,  p-value: < 2.220446049e-16
 Analysis of Variance Table
 
 Response: y
-          Df          Sum Sq         Mean Sq         F value     Pr(>F)    
-x          1 15.603856733899 15.603856733899 370657513.46639 < 2.22e-16 ***
-I(x^2)     1  0.000177590520  0.000177590520      4218.52506 < 2.22e-16 ***
-Residuals 37  0.000001557618  0.000000042098                               
+          Df                 Sum Sq                Mean Sq
+x          1 1.5603856733899418e+01 1.5603856733899418e+01
+I(x^2)     1 1.7759052039473990e-04 1.7759052039473990e-04
+Residuals 37 1.5576176879701001e-06 4.2097775350499999e-08
+                         F value     Pr(>F)    
+x         3.7065751346639001e+08 < 2.22e-16 ***
+I(x^2)    4.2185250599999999e+03 < 2.22e-16 ***
+Residuals                                      
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 \end{Soutput}
 \end{Schunk}
 
-\section{NoInt1}
+\subsection{NoInt1}
 Using the NoInt1 data set \url{://www.itl.nist.gov/div898/strd/lls/data/NoInt1.shtml}
 
 \subsection*{Data Set Description}
@@ -328,18 +347,21 @@ Call:
 lm(formula = y ~ x + 0, data = NoInt1)
 
 Residuals:
-            Min              1Q          Median              3Q             Max 
--5.206611570248 -2.520661157025  0.165289256198  2.851239669421  5.537190082645 
+                 Min                   1Q               Median 
+-5.20661157024794718 -2.52066115702480609  0.16528925619836343 
+                  3Q                  Max 
+ 2.85123966942149032  5.53719008264467316 
 
 Coefficients:
-         Estimate      Std. Error t value   Pr(>|t|)    
-x 2.0743801652893 0.0165289256198   125.5 < 2.22e-16 ***
+              Estimate           Std. Error t value   Pr(>|t|)    
+x 2.074380165289256173 0.016528925619834767   125.5 < 2.22e-16 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 
-Residual standard error: 3.56753034006 on 10 degrees of freedom
-Multiple R-squared:  0.999365492299,	Adjusted R-squared:  0.999302041529 
-F-statistic:      15750.25 on 1 and 10 DF,  p-value: < 2.220446049e-16
+Residual standard error: 3.5675303400633909 on 10 degrees of freedom
+Multiple R-squared:  0.9993654922986627831,	Adjusted R-squared:  0.9993020415285290836 
+F-statistic:  15750.2499999998945 on 1 and 10 DF,  p-value: < 2.2204460492503131e-16
 \end{Soutput}
 \begin{Sinput}
 > anova(NoInt1.lm)
@@ -348,15 +370,19 @@ F-statistic:      15750.25 on 1 and 10 DF,  p-value: < 2.220446049e-16
 Analysis of Variance Table
 
 Response: y
-          Df          Sum Sq         Mean Sq  F value     Pr(>F)    
-x          1 200457.72727273 200457.72727273 15750.25 < 2.22e-16 ***
-Residuals 10    127.27272727     12.72727273                        
+          Df                Sum Sq                Mean Sq  F value     Pr(>F)
+x          1 200457.72727272729389 200457.727272727293894 15750.25 < 2.22e-16
+Residuals 10    127.27272727272812     12.727272727272812                    
+             
+x         ***
+Residuals    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 \end{Soutput}
 \end{Schunk}
 
-\section{NoInt2}
+\subsection{NoInt2}
 Using the NoInt2 data set \url{://www.itl.nist.gov/div898/strd/lls/data/NoInt2.shtml}
 
 \subsection*{Data Set Description}
@@ -404,18 +430,19 @@ Call:
 lm(formula = y ~ x + 0, data = NoInt2)
 
 Residuals:
-               1                2                3 
- 0.0909090909091  0.3636363636364 -0.3636363636364 
+                    1                     2                     3 
+ 0.090909090909088691  0.363636363636364424 -0.363636363636362869 
 
 Coefficients:
-         Estimate      Std. Error  t value  Pr(>|t|)   
-x 0.7272727272727 0.0420827318078 17.28198 0.0033315 **
+              Estimate           Std. Error            t value  Pr(>|t|)   
+x 0.727272727272726960 0.042082731807843207 17.281980000000001 0.0033315 **
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 
-Residual standard error: 0.369274472938 on 2 degrees of freedom
-Multiple R-squared:  0.993348115299,	Adjusted R-squared:  0.990022172949 
-F-statistic: 298.666666667 on 1 and 2 DF,  p-value: 0.00333149176904
+Residual standard error: 0.36927447293799792 on 2 degrees of freedom
+Multiple R-squared:  0.9933481152993347552,	Adjusted R-squared:  0.9900221729490021882 
+F-statistic: 298.6666666666671404 on 1 and 2 DF,  p-value: 0.003331491769036167
 \end{Soutput}
 \begin{Sinput}
 > anova(NoInt2.lm)
@@ -424,16 +451,20 @@ F-statistic: 298.666666667 on 1 and 2 DF,  p-value: 0.00333149176904
 Analysis of Variance Table
 
 Response: y
-          Df         Sum Sq        Mean Sq   F value    Pr(>F)   
-x          1 40.72727272727 40.72727272727 298.66667 0.0033315 **
-Residuals  2  0.27272727273  0.13636363636                       
+          Df               Sum Sq              Mean Sq            F value
+x          1 40.72727272727271242 40.72727272727271242 298.66667000000001
+Residuals  2  0.27272727272727232  0.13636363636363616                   
+             Pr(>F)   
+x         0.0033315 **
+Residuals             
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 \end{Soutput}
 \end{Schunk}
 
 
-\section{Filip}
+\subsection{Filip}
 Using the Filip data set \url{://www.itl.nist.gov/div898/strd/lls/data/Filip.shtml}
 
 \subsection*{Data Set Description}
@@ -490,42 +521,43 @@ Call:
 lm(formula = y ~ poly(x, 10, raw = TRUE), data = Filip)
 
 Residuals:
-               Min                 1Q             Median                 3Q 
--0.009908657629677 -0.002461025773308  0.000338470313538  0.002074343959809 
-               Max 
- 0.007165411201025 
+                    Min                      1Q                  Median 
+-0.00990865762967724911 -0.00246102577330834568  0.00033847031353771565 
+                     3Q                     Max 
+ 0.00207434395980854187  0.00716541120102509414 
 
 Coefficients: (1 not defined because of singularities)
-                                    Estimate         Std. Error  t value
-(Intercept)               -1.74280445635e+02  8.75611622176e+01 -1.99039
-poly(x, 10, raw = TRUE)1  -3.26882209949e+02  1.48049618157e+02 -2.20792
-poly(x, 10, raw = TRUE)2  -2.66056540511e+02  1.09512084514e+02 -2.42947
-poly(x, 10, raw = TRUE)3  -1.23921614440e+02  4.65247147225e+01 -2.66357
-poly(x, 10, raw = TRUE)4  -3.63816709520e+01  1.25145200544e+01 -2.90716
-poly(x, 10, raw = TRUE)5  -6.97918838076e+00  2.21116609894e+00 -3.15634
-poly(x, 10, raw = TRUE)6  -8.74660178695e-01  2.56744908247e-01 -3.40673
-poly(x, 10, raw = TRUE)7  -6.90600974071e-02  1.89005628454e-02 -3.65386
-poly(x, 10, raw = TRUE)8  -3.11832190160e-03  8.00878984696e-04 -3.89362
-poly(x, 10, raw = TRUE)9  -6.13867083353e-05  1.48905168694e-05 -4.12254
-poly(x, 10, raw = TRUE)10                 NA                 NA       NA
-                            Pr(>|t|)    
-(Intercept)               0.05034547 .  
-poly(x, 10, raw = TRUE)1  0.03043559 *  
-poly(x, 10, raw = TRUE)2  0.01761673 *  
-poly(x, 10, raw = TRUE)3  0.00953389 ** 
-poly(x, 10, raw = TRUE)4  0.00484493 ** 
-poly(x, 10, raw = TRUE)5  0.00233320 ** 
-poly(x, 10, raw = TRUE)6  0.00107912 ** 
-poly(x, 10, raw = TRUE)7  0.00048725 ***
-poly(x, 10, raw = TRUE)8  0.00021857 ***
-poly(x, 10, raw = TRUE)9   9.907e-05 ***
-poly(x, 10, raw = TRUE)10         NA    
+                                         Estimate              Std. Error
+(Intercept)               -1.7428044563463959e+02  8.7561162217625807e+01
+poly(x, 10, raw = TRUE)1  -3.2688220994861894e+02  1.4804961815707296e+02
+poly(x, 10, raw = TRUE)2  -2.6605654051119797e+02  1.0951208451353565e+02
+poly(x, 10, raw = TRUE)3  -1.2392161444002367e+02  4.6524714722544466e+01
+poly(x, 10, raw = TRUE)4  -3.6381670952047024e+01  1.2514520054377089e+01
+poly(x, 10, raw = TRUE)5  -6.9791883807598705e+00  2.2111660989355579e+00
+poly(x, 10, raw = TRUE)6  -8.7466017869459656e-01  2.5674490824684437e-01
+poly(x, 10, raw = TRUE)7  -6.9060097407069573e-02  1.8900562845353470e-02
+poly(x, 10, raw = TRUE)8  -3.1183219015965633e-03  8.0087898469617799e-04
+poly(x, 10, raw = TRUE)9  -6.1386708335283072e-05  1.4890516869441546e-05
+poly(x, 10, raw = TRUE)10                      NA                      NA
+                                      t value   Pr(>|t|)    
+(Intercept)               -1.9903900000000001 0.05034547 .  
+poly(x, 10, raw = TRUE)1  -2.2079200000000001 0.03043559 *  
+poly(x, 10, raw = TRUE)2  -2.4294699999999998 0.01761673 *  
+poly(x, 10, raw = TRUE)3  -2.6635700000000000 0.00953389 ** 
+poly(x, 10, raw = TRUE)4  -2.9071600000000002 0.00484493 ** 
+poly(x, 10, raw = TRUE)5  -3.1563400000000001 0.00233320 ** 
+poly(x, 10, raw = TRUE)6  -3.4067300000000000 0.00107912 ** 
+poly(x, 10, raw = TRUE)7  -3.6538599999999999 0.00048725 ***
+poly(x, 10, raw = TRUE)8  -3.8936199999999999 0.00021857 ***
+poly(x, 10, raw = TRUE)9  -4.1225399999999999  9.907e-05 ***
+poly(x, 10, raw = TRUE)10                  NA         NA    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 
-Residual standard error: 0.00376801218783 on 72 degrees of freedom
-Multiple R-squared:  0.995796453099,	Adjusted R-squared:  0.995271009736 
-F-statistic: 1895.15469013 on 9 and 72 DF,  p-value: < 2.220446049e-16
+Residual standard error: 0.0037680121878278122 on 72 degrees of freedom
+Multiple R-squared:  0.9957964530989105167,	Adjusted R-squared:  0.9952710097362743591 
+F-statistic: 1895.154690132417954 on 9 and 72 DF,  p-value: < 2.2204460492503131e-16
 \end{Soutput}
 \begin{Sinput}
 > anova(Filip.lm)
@@ -534,14 +566,15 @@ F-statistic: 1895.15469013 on 9 and 72 DF,  p-value: < 2.220446049e-16
 Analysis of Variance Table
 
 Response: y
-                        Df           Sum Sq           Mean Sq    F value
-poly(x, 10, raw = TRUE)  9 0.24216522127848 0.026907246808720 1895.15469
-Residuals               72 0.00102224994103 0.000014197915848           
-                            Pr(>F)    
-poly(x, 10, raw = TRUE) < 2.22e-16 ***
-Residuals                             
+                        Df                Sum Sq                Mean Sq
+poly(x, 10, raw = TRUE)  9 0.2421652212784838054 2.6907246808720423e-02
+Residuals               72 0.0010222499410285635 1.4197915847618938e-05
+                                   F value     Pr(>F)    
+poly(x, 10, raw = TRUE) 1895.1546900000001 < 2.22e-16 ***
+Residuals                                                
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 \end{Soutput}
 \end{Schunk}
 
@@ -566,30 +599,43 @@ lm(formula = y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) +
     I(x^7) + I(x^8) + I(x^9) + I(x^10), data = Filip)
 
 Residuals:
-               Min                 1Q             Median                 3Q 
--0.009908657629677 -0.002461025773308  0.000338470313538  0.002074343959809 
-               Max 
- 0.007165411201025 
+                    Min                      1Q                  Median 
+-0.00990865762967724911 -0.00246102577330834568  0.00033847031353771565 
+                     3Q                     Max 
+ 0.00207434395980854187  0.00716541120102509414 
 
 Coefficients: (1 not defined because of singularities)
-                      Estimate         Std. Error  t value   Pr(>|t|)    
-(Intercept) -1.74280445635e+02  8.75611622176e+01 -1.99039 0.05034547 .  
-x           -3.26882209949e+02  1.48049618157e+02 -2.20792 0.03043559 *  
-I(x^2)      -2.66056540511e+02  1.09512084514e+02 -2.42947 0.01761673 *  
-I(x^3)      -1.23921614440e+02  4.65247147225e+01 -2.66357 0.00953389 ** 
-I(x^4)      -3.63816709520e+01  1.25145200544e+01 -2.90716 0.00484493 ** 
-I(x^5)      -6.97918838076e+00  2.21116609894e+00 -3.15634 0.00233320 ** 
-I(x^6)      -8.74660178695e-01  2.56744908247e-01 -3.40673 0.00107912 ** 
-I(x^7)      -6.90600974071e-02  1.89005628454e-02 -3.65386 0.00048725 ***
-I(x^8)      -3.11832190160e-03  8.00878984696e-04 -3.89362 0.00021857 ***
-I(x^9)      -6.13867083353e-05  1.48905168694e-05 -4.12254  9.907e-05 ***
-I(x^10)                     NA                 NA       NA         NA    
+                           Estimate              Std. Error             t value
+(Intercept) -1.7428044563463959e+02  8.7561162217625807e+01 -1.9903900000000001
+x           -3.2688220994861894e+02  1.4804961815707296e+02 -2.2079200000000001
+I(x^2)      -2.6605654051119797e+02  1.0951208451353565e+02 -2.4294699999999998
+I(x^3)      -1.2392161444002367e+02  4.6524714722544466e+01 -2.6635700000000000
+I(x^4)      -3.6381670952047024e+01  1.2514520054377089e+01 -2.9071600000000002
+I(x^5)      -6.9791883807598705e+00  2.2111660989355579e+00 -3.1563400000000001
+I(x^6)      -8.7466017869459656e-01  2.5674490824684437e-01 -3.4067300000000000
+I(x^7)      -6.9060097407069573e-02  1.8900562845353470e-02 -3.6538599999999999
+I(x^8)      -3.1183219015965633e-03  8.0087898469617799e-04 -3.8936199999999999
+I(x^9)      -6.1386708335283072e-05  1.4890516869441546e-05 -4.1225399999999999
+I(x^10)                          NA                      NA                  NA
+              Pr(>|t|)    
+(Intercept) 0.05034547 .  
+x           0.03043559 *  
+I(x^2)      0.01761673 *  
+I(x^3)      0.00953389 ** 
+I(x^4)      0.00484493 ** 
+I(x^5)      0.00233320 ** 
+I(x^6)      0.00107912 ** 
+I(x^7)      0.00048725 ***
+I(x^8)      0.00021857 ***
+I(x^9)       9.907e-05 ***
+I(x^10)             NA    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 
-Residual standard error: 0.00376801218783 on 72 degrees of freedom
-Multiple R-squared:  0.995796453099,	Adjusted R-squared:  0.995271009736 
-F-statistic: 1895.15469013 on 9 and 72 DF,  p-value: < 2.220446049e-16
+Residual standard error: 0.0037680121878278122 on 72 degrees of freedom
+Multiple R-squared:  0.9957964530989105167,	Adjusted R-squared:  0.9952710097362743591 
+F-statistic: 1895.154690132417954 on 9 and 72 DF,  p-value: < 2.2204460492503131e-16
 \end{Soutput}
 \begin{Sinput}
 > anova(Filip2.lm)
@@ -598,25 +644,37 @@ F-statistic: 1895.15469013 on 9 and 72 DF,  p-value: < 2.220446049e-16
 Analysis of Variance Table
 
 Response: y
-          Df           Sum Sq          Mean Sq     F value     Pr(>F)    
-x          1 0.21288106025948 0.21288106025948 14993.82462 < 2.22e-16 ***
-I(x^2)     1 0.00753409869624 0.00753409869624   530.64821 < 2.22e-16 ***
-I(x^3)     1 0.00683749292831 0.00683749292831   481.58427 < 2.22e-16 ***
-I(x^4)     1 0.00935927452572 0.00935927452572   659.20059 < 2.22e-16 ***
-I(x^5)     1 0.00030458358215 0.00030458358215    21.45270 1.5707e-05 ***
-I(x^6)     1 0.00380533483833 0.00380533483833   268.02066 < 2.22e-16 ***
-I(x^7)     1 0.00004444148251 0.00004444148251     3.13014   0.081092 .  
-I(x^8)     1 0.00115763695335 0.00115763695335    81.53570 1.8390e-13 ***
-I(x^9)     1 0.00024129801239 0.00024129801239    16.99531 9.9070e-05 ***
-Residuals 72 0.00102224994103 0.00001419791585                           
+          Df                 Sum Sq                Mean Sq
+x          1 2.1288106025947531e-01 2.1288106025947531e-01
+I(x^2)     1 7.5340986962444470e-03 7.5340986962444470e-03
+I(x^3)     1 6.8374929283144502e-03 6.8374929283144502e-03
+I(x^4)     1 9.3592745257209103e-03 9.3592745257209103e-03
+I(x^5)     1 3.0458358215425621e-04 3.0458358215425621e-04
+I(x^6)     1 3.8053348383291141e-03 3.8053348383291141e-03
+I(x^7)     1 4.4441482509089002e-05 4.4441482509089002e-05
+I(x^8)     1 1.1576369533475999e-03 1.1576369533475999e-03
+I(x^9)     1 2.4129801238862008e-04 2.4129801238862008e-04
+Residuals 72 1.0222499410285635e-03 1.4197915847618938e-05
+                         F value     Pr(>F)    
+x         14993.8246199999994133 < 2.22e-16 ***
+I(x^2)      530.6482099999999491 < 2.22e-16 ***
+I(x^3)      481.5842700000000036 < 2.22e-16 ***
+I(x^4)      659.2005900000000338 < 2.22e-16 ***
+I(x^5)       21.4527000000000001 1.5707e-05 ***
+I(x^6)      268.0206600000000208 < 2.22e-16 ***
+I(x^7)        3.1301399999999999   0.081092 .  
+I(x^8)       81.5357000000000056 1.8390e-13 ***
+I(x^9)       16.9953099999999999 9.9070e-05 ***
+Residuals                                      
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 \end{Soutput}
 \end{Schunk}
 
 
 
-\section{Longley}
+\subsection{Longley}
 Using the Longley data set \url{://www.itl.nist.gov/div898/strd/lls/data/Longley.shtml}
 
 \subsection*{Data Set Description}
@@ -674,24 +732,35 @@ Call:
 lm(formula = y ~ ., data = Longley)
 
 Residuals:
-            Min              1Q          Median              3Q             Max 
--410.1146219309 -157.6747192954  -28.1619848188  101.5503832581  455.3940945519 
+                 Min                   1Q               Median 
+-410.114621930903809 -157.674719295390105  -28.161984818765305 
+                  3Q                  Max 
+ 101.550383258075641  455.394094551858075 
 
 Coefficients:
-                      Estimate         Std. Error  t value   Pr(>|t|)    
-(Intercept) -3.48225863460e+06  8.90420383607e+05 -3.91080 0.00356040 ** 
-x1           1.50618722714e+01  8.49149257748e+01  0.17738 0.86314083    
-x2          -3.58191792926e-02  3.34910077722e-02 -1.06952 0.31268106    
-x3          -2.02022980382e+00  4.88399681652e-01 -4.13643 0.00253509 ** 
-x4          -1.03322686717e+00  2.14274163162e-01 -4.82199 0.00094437 ***
-x5          -5.11041056536e-02  2.26073200069e-01 -0.22605 0.82621180    
-x6           1.82915146461e+03  4.55478499142e+02  4.01589 0.00303680 ** 
+                           Estimate              Std. Error
+(Intercept) -3.4822586345958230e+06  8.9042038360736868e+05
+x1           1.5061872271374767e+01  8.4914925774766857e+01
+x2          -3.5819179292591374e-02  3.3491007772243002e-02
+x3          -2.0202298038168283e+00  4.8839968165169617e-01
+x4          -1.0332268671735907e+00  2.1427416316167394e-01
+x5          -5.1104105653578730e-02  2.2607320006936876e-01
+x6           1.8291514646135540e+03  4.5547849914220996e+02
+                         t value   Pr(>|t|)    
+(Intercept) -3.91080000000000005 0.00356040 ** 
+x1           0.17738000000000001 0.86314083    
+x2          -1.06952000000000003 0.31268106    
+x3          -4.13642999999999983 0.00253509 ** 
+x4          -4.82199000000000044 0.00094437 ***
+x5          -0.22605000000000000 0.82621180    
+x6           4.01588999999999974 0.00303680 ** 
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 
-Residual standard error: 304.854073562 on 9 degrees of freedom
-Multiple R-squared:  0.995479004577,	Adjusted R-squared:  0.992465007629 
-F-statistic: 330.285339235 on 6 and 9 DF,  p-value: 4.98403052872e-10
+Residual standard error: 304.85407356196362 on 9 degrees of freedom
+Multiple R-squared:  0.9954790045772956564,	Adjusted R-squared:  0.992465007628826057 
+F-statistic: 330.2853392345908219 on 6 and 9 DF,  p-value: 4.9840305287246181e-10
 \end{Soutput}
 \begin{Sinput}
 > anova(Longley.lm)
@@ -700,16 +769,25 @@ F-statistic: 330.285339235 on 6 and 9 DF,  p-value: 4.98403052872e-10
 Analysis of Variance Table
 
 Response: y
-          Df          Sum Sq         Mean Sq    F value     Pr(>F)    
-x1         1 174397449.77913 174397449.77913 1876.53265 9.2954e-12 ***
-x2         1   4787181.04445   4787181.04445   51.51051 5.2109e-05 ***
-x3         1   2263971.10982   2263971.10982   24.36054 0.00080706 ***
-x4         1    876397.16186    876397.16186    9.43011 0.01333568 *  
-x5         1    348589.39965    348589.39965    3.75085 0.08475523 .  
-x6         1   1498813.44959   1498813.44959   16.12737 0.00303680 ** 
-Residuals  9    836424.05551     92936.00617                          
+          Df                Sum Sq                Mean Sq               F value
+x1         1 174397449.77912792563 174397449.779127925634 1876.5326500000001033
+x2         1   4787181.04444965813   4787181.044449658133   51.5105099999999965
+x3         1   2263971.10981840128   2263971.109818401281   24.3605400000000003
+x4         1    876397.16186108603    876397.161861086031    9.4301100000000009
+x5         1    348589.39964974835    348589.399649748346    3.7508499999999998
+x6         1   1498813.44958734419   1498813.449587344192   16.1273699999999991
+Residuals  9    836424.05550590809     92936.006167323125                      
+              Pr(>F)    
+x1        9.2954e-12 ***
+x2        5.2109e-05 ***
+x3        0.00080706 ***
+x4        0.01333568 *  
+x5        0.08475523 .  
+x6        0.00303680 ** 
+Residuals               
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  
+0 '***' 0.001 '**' 0.01 '*' 0.050000000000000003 '.' 0.10000000000000001 ' ' 1
 \end{Soutput}
 \end{Schunk}
 
